@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShowDataFragment"
+    android:orientation="vertical"
+    android:layout_margin="10dp">
+
+    <LinearLayout
+        android:id="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/cardview_dark_background"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:text="@string/dataintro"
+            android:fontFamily="sans-serif"
+            android:textSize="23sp" />
+
+        <TextView
+            android:id="@+id/nombredata"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="13sp"
+            android:textAlignment="textEnd"/>
+
+        <TextView
+            android:id="@+id/emaildata"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="13sp"
+            android:textAlignment="textEnd"/>
+
+        <TextView
+            android:id="@+id/telefonodata"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="13sp"
+            android:textAlignment="textEnd"/>
+
+        <TextView
+            android:id="@+id/fechadata"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="13sp"
+            android:textAlignment="textEnd"/>
+
+        <TextView
+            android:id="@+id/authfotodata"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="13sp"
+            android:textAlignment="textEnd"/>
+
+        <TextView
+            android:id="@+id/authcomunicadodata"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="13sp"
+            android:textAlignment="textEnd"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/editbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:text="@string/editbtn"/>
+
+    </LinearLayout>
+
+</LinearLayout>

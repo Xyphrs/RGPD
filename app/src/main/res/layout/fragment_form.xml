@@ -1,16 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FormFragment"
     android:orientation="vertical">
 
-    <DatePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:autofillHints="Paco"
+        android:hint="@string/nombre"/>
 
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:autofillHints="Paco"
+        android:hint="@string/correo"/>
 
+    <EditText
+        android:id="@+id/telefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:autofillHints="Paco"
+        android:hint="@string/telefono"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/fecha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:focusable="false"
+            android:clickable="true"
+            android:autofillHints="Paco"
+            android:hint="@string/fecha"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/hora"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:focusable="false"
+            android:clickable="true"
+            android:autofillHints="Paco"
+            android:hint="@string/hora"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/authfoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/foto"/>
+
+    <CheckBox
+        android:id="@+id/authcomunicado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/comunicado"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/enviar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enviar" />
 
 
 </LinearLayout>

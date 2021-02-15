@@ -9,5 +9,14 @@
         android:id="@+id/formFragment"
         android:name="com.example.rgpd.FormFragment"
         android:label="fragment_form"
-        tools:layout="@layout/fragment_form" />
+        tools:layout="@layout/fragment_form" >
+        <action
+            android:id="@+id/action_formFragment_to_showDataFragment"
+            app:destination="@id/showDataFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showDataFragment"
+        android:name="com.example.rgpd.ShowDataFragment"
+        android:label="fragment_show_data"
+        tools:layout="@layout/fragment_show_data" />
 </navigation>
