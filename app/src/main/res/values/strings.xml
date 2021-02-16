@@ -12,4 +12,10 @@
     <string name="enviar">ENVIAR</string>
     <string name="dataintro">DATOS INTRODUCIDOS</string>
     <string name="editbtn">editar</string>
+    <string name="name">Nombre:</string>
+    <string name="email">Email:</string>
+    <string name="phone">Telefono:</string>
+    <string name="date">Fecha:</string>
+    <string name="autorizacion_de_comunicado">Autorizacion de comunicado:</string>
+    <string name="autorizacion_de_foto">Autorizacion de Foto:</string>
 </resources>

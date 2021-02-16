@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -38,13 +37,11 @@ public class FormFragment extends Fragment {
     CheckBox authcomunicado;
     Button enviar;
     FirebaseFirestore db;
-    ShowDataFragment showDataFragment;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_form, container, false);
-
     }
 
     @Override
@@ -81,10 +78,10 @@ public class FormFragment extends Fragment {
         String vHora = hora.getText().toString();
         String vFecha = vDia + ", " + vHora;
 
-        String  vAuthFoto = String.valueOf(authfoto.isChecked());
-        String  vAuthComunicado = String.valueOf(authcomunicado.isChecked());
+        String vAuthFoto = String.valueOf(authfoto.isChecked());
+        String vAuthComunicado = String.valueOf(authcomunicado.isChecked());
 
-        Map<String, String > map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         map.put("Nombre", vNombre);
         map.put("Email", vEmail);
         map.put("Telefono", vTelefono);
@@ -95,14 +92,17 @@ public class FormFragment extends Fragment {
                 .addOnSuccessListener(documentReference -> Toast.makeText(getContext(), "Datos enviados", Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e -> Toast.makeText(getContext(), "Los datos no se pueden enviar", Toast.LENGTH_SHORT).show());
 
+        Bundle bundle = new Bundle();
+        bundle.putString("Nombre", vNombre);
+        bundle.putString("Email", vEmail);
+        bundle.putString("Telefono", vTelefono);
+        bundle.putString("Fecha", vFecha);
+        bundle.putString("Authfoto", vAuthFoto);
+        bundle.putString("Authcomunicado", vAuthComunicado);
 
-        showDataFragment.nombredata.setText(map.get("Nombre"));
-        showDataFragment.emaildata.setText(map.get("Nombre"));
-        showDataFragment.telefonodata.setText(map.get("Nombre"));
-        showDataFragment.fechadata.setText(map.get("Nombre"));
-        showDataFragment.authfotodata.setText(map.get("Nombre"));
-        showDataFragment.authcomunicadodata.setText(map.get("Nombre"));
-
+        ShowDataFragment showDataFragment = new ShowDataFragment();
+        showDataFragment.setArguments(bundle);
+        getParentFragmentManager().beginTransaction().commit();
     }
 
     private void TimePicker() {

@@ -31,10 +31,12 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="13sp"
+            android:text="@string/name"
             android:textAlignment="textEnd"/>
 
         <TextView
             android:id="@+id/emaildata"
+            android:text="@string/email"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -46,6 +48,7 @@
             android:id="@+id/telefonodata"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:text="@string/phone"
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="13sp"
@@ -56,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:text="@string/date"
             android:fontFamily="sans-serif"
             android:textSize="13sp"
             android:textAlignment="textEnd"/>
@@ -65,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:text="@string/autorizacion_de_foto"
             android:fontFamily="sans-serif"
             android:textSize="13sp"
             android:textAlignment="textEnd"/>
@@ -73,6 +78,7 @@
             android:id="@+id/authcomunicadodata"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:text="@string/autorizacion_de_comunicado"
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:textSize="13sp"

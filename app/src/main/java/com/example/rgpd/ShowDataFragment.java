@@ -12,33 +12,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.rgpd.databinding.FragmentShowDataBinding;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class ShowDataFragment extends Fragment {
 
     FragmentShowDataBinding binding;
     FormFragment formFragment;
-    TextView nombredata;
-    TextView emaildata;
-    TextView telefonodata;
-    TextView fechadata;
-    TextView authfotodata;
-    TextView authcomunicadodata;
     Button edit;
     FirebaseFirestore db;
 
-
-
-
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_show_data, container, false);
-
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return (binding = FragmentShowDataBinding.inflate(inflater, container, false)).getRoot();
     }
 
     @Override
@@ -46,19 +31,25 @@ public class ShowDataFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         db = FirebaseFirestore.getInstance();
-        nombredata = view.findViewById(R.id.nombredata);
-        emaildata = view.findViewById(R.id.emaildata);
-        telefonodata = view.findViewById(R.id.telefonodata);
-        fechadata = view.findViewById(R.id.fechadata);
-        authfotodata = view.findViewById(R.id.authfotodata);
-        authcomunicadodata = view.findViewById(R.id.authcomunicadodata);
-        edit = view.findViewById(R.id.editbtn);
 
-//        nombredata.setText(String.format("Nombre: %s", m.getString("Nombre")));
-//        emaildata.setText(String.format("Nombre: %s", m.getString("Email")));
-//        telefonodata.setText(String.format("Nombre: %s", m.getString("Telefono")));
-//        fechadata.setText(String.format("Nombre: %s", m.getString("Fecha")));
-//        authfotodata.setText(String.format("Nombre: %s", m.getBoolean("Authfoto")));
-//        authcomunicadodata.setText(String.format("Nombre: %s", m.getBoolean("Authcomunicado")));
+        Bundle bundle = this.getArguments();
+        if (bundle != null){
+            String vNombre = bundle.getString("Nombre");
+            String vEmail = bundle.getString("Email");
+            String vTelefono = bundle.getString("Telefono");
+            String vFecha = bundle.getString("Fecha");
+            String vAuthFoto = bundle.getString("Authfoto");
+            String vAuthComunicado = bundle.getString("Authcomunicado");
+
+            System.out.println("Bundle isn't null");
+
+            binding.nombredata.setText(vNombre);
+            binding.emaildata.setText(vEmail);
+            binding.telefonodata.setText(vTelefono);
+            binding.fechadata.setText(vFecha);
+            binding.authfotodata.setText(vAuthFoto);
+            binding.authcomunicadodata.setText(vAuthComunicado);
+        }
+        System.out.println("Bundle is null");
     }
 }
