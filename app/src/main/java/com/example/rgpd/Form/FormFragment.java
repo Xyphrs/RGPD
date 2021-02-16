@@ -1,23 +1,23 @@
-package com.example.rgpd;
+package com.example.rgpd.Form;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.rgpd.Pickers.DatePickerFragment;
 import com.example.rgpd.Pickers.TimePickerFragment;
+import com.example.rgpd.R;
 import com.example.rgpd.databinding.FragmentFormBinding;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -28,20 +28,13 @@ public class FormFragment extends Fragment {
 
     FragmentFormBinding binding;
     NavController navController;
-    EditText nombre;
-    EditText email;
-    EditText telefono;
-    EditText fecha;
-    EditText hora;
-    CheckBox authfoto;
-    CheckBox authcomunicado;
-    Button enviar;
     FirebaseFirestore db;
+    private MainViewModel mainViewModel;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_form, container, false);
+        return (binding = FragmentFormBinding.inflate(inflater, container, false)).getRoot();
     }
 
     @Override
@@ -51,35 +44,31 @@ public class FormFragment extends Fragment {
         navController = Navigation.findNavController(view);
         db = FirebaseFirestore.getInstance();
 
-        nombre = view.findViewById(R.id.nombre);
-        email = view.findViewById(R.id.email);
-        telefono = view.findViewById(R.id.telefono);
-        fecha = view.findViewById(R.id.fecha);
-        hora = view.findViewById(R.id.hora);
-        authfoto = view.findViewById(R.id.authfoto);
-        authcomunicado = view.findViewById(R.id.authcomunicado);
-        enviar = view.findViewById(R.id.enviar);
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
 
-        fecha.setOnClickListener(v -> DatePicker());
-        hora.setOnClickListener(v -> TimePicker());
+        binding.fecha.setOnClickListener(v -> DatePicker());
+        binding.hora.setOnClickListener(v -> TimePicker());
 
-        enviar.setOnClickListener(v -> {
+        binding.enviar.setOnClickListener(v -> {
             CreateData();
+            SystemClock.sleep(1000);
             navController.navigate(R.id.action_formFragment_to_showDataFragment);
         });
+
+
     }
 
     private void CreateData() {
-        String vNombre = nombre.getText().toString();
-        String vEmail = email.getText().toString();
-        String vTelefono = telefono.getText().toString();
+        String vNombre = binding.nombre.getText().toString();
+        String vEmail = binding.email.getText().toString();
+        String vTelefono = binding.telefono.getText().toString();
 
-        String vDia = fecha.getText().toString();
-        String vHora = hora.getText().toString();
+        String vDia = binding.fecha.getText().toString();
+        String vHora = binding.hora.getText().toString();
         String vFecha = vDia + ", " + vHora;
 
-        String vAuthFoto = String.valueOf(authfoto.isChecked());
-        String vAuthComunicado = String.valueOf(authcomunicado.isChecked());
+        String vAuthFoto = String.valueOf(binding.authfoto.isChecked());
+        String vAuthComunicado = String.valueOf(binding.authcomunicado.isChecked());
 
         Map<String, String> map = new HashMap<>();
         map.put("Nombre", vNombre);
@@ -88,27 +77,19 @@ public class FormFragment extends Fragment {
         map.put("Fecha", vFecha);
         map.put("Authfoto", vAuthFoto);
         map.put("Authcomunicado", vAuthComunicado);
+
         db.collection("test").add(map)
-                .addOnSuccessListener(documentReference -> Toast.makeText(getContext(), "Datos enviados", Toast.LENGTH_SHORT).show())
+                .addOnSuccessListener(documentReference -> {
+                    mainViewModel.testId = documentReference.getId();
+                    Toast.makeText(getContext(), "Datos enviados", Toast.LENGTH_SHORT).show();
+                })
                 .addOnFailureListener(e -> Toast.makeText(getContext(), "Los datos no se pueden enviar", Toast.LENGTH_SHORT).show());
-
-        Bundle bundle = new Bundle();
-        bundle.putString("Nombre", vNombre);
-        bundle.putString("Email", vEmail);
-        bundle.putString("Telefono", vTelefono);
-        bundle.putString("Fecha", vFecha);
-        bundle.putString("Authfoto", vAuthFoto);
-        bundle.putString("Authcomunicado", vAuthComunicado);
-
-        ShowDataFragment showDataFragment = new ShowDataFragment();
-        showDataFragment.setArguments(bundle);
-        getParentFragmentManager().beginTransaction().commit();
     }
 
     private void TimePicker() {
         @SuppressLint("DefaultLocale")
         TimePickerFragment newFragment = TimePickerFragment.newInstance((view, hourOfDay, minute) -> {
-            hora.setText(String.format("%02d:%02d", hourOfDay, minute));
+            binding.hora.setText(String.format("%02d:%02d", hourOfDay, minute));
         });
 
 
@@ -118,7 +99,7 @@ public class FormFragment extends Fragment {
     private void DatePicker() {
         DatePickerFragment newFragment = DatePickerFragment.newInstance((datePicker, year, month, day) -> {
             final String selectedDate = day + " / " + (month+1) + " / " + year;
-            fecha.setText(selectedDate);
+            binding.fecha.setText(selectedDate);
         });
 
         newFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
