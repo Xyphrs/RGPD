@@ -43,23 +43,61 @@ public class FormFragment extends Fragment {
 
         navController = Navigation.findNavController(view);
         db = FirebaseFirestore.getInstance();
-
         mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+
+        binding.nombre.setText(mainViewModel.nombreForm);
+        binding.dni.setText(mainViewModel.dniForm);
+        binding.email.setText(mainViewModel.emailForm);
+        binding.telefono.setText(mainViewModel.telefonoForm);
+        binding.fecha.setText(mainViewModel.diaForm);
+        binding.hora.setText(mainViewModel.horaForm);
+
+        binding.authfoto.setChecked(mainViewModel.authFotoForm);
+        binding.authcomunicado.setChecked(mainViewModel.authComunicadoForm);
+        binding.authprivacidad.setChecked(mainViewModel.signature != null);
 
         binding.fecha.setOnClickListener(v -> DatePicker());
         binding.hora.setOnClickListener(v -> TimePicker());
 
         binding.enviar.setOnClickListener(v -> {
-            CreateData();
-            SystemClock.sleep(1000);
-            navController.navigate(R.id.action_formFragment_to_showDataFragment);
+            mainViewModel.nombreForm = binding.nombre.getText().toString();
+            mainViewModel.dniForm = binding.dni.getText().toString();
+            mainViewModel.emailForm = binding.email.getText().toString();
+            mainViewModel.telefonoForm = binding.telefono.getText().toString();
+            mainViewModel.diaForm = binding.fecha.getText().toString();
+            mainViewModel.horaForm = binding.hora.getText().toString();
+            mainViewModel.authFotoForm = binding.authfoto.isChecked();
+            mainViewModel.authComunicadoForm = binding.authcomunicado.isChecked();
+            if (binding.authprivacidad.isChecked() && !mainViewModel.nombreForm.equals("") && !mainViewModel.dniForm.equals("") && !mainViewModel.emailForm.equals("") && !mainViewModel.diaForm.equals("") && !mainViewModel.horaForm.equals("")) {
+                if (mainViewModel.testId != null) {
+                    EditData();
+                } else {
+                    CreateData();
+                }
+                SystemClock.sleep(1500);
+                System.out.println(mainViewModel.testId);
+                navController.navigate(R.id.action_formFragment_to_showDataFragment);
+            } else {
+                Toast.makeText(getContext(), "No puedes enviar el formulario sin aceptar las politicas de privacidad y firmar ", Toast.LENGTH_LONG).show();
+            }
         });
 
-
+        binding.authprivacidad.setOnClickListener(v -> {
+            mainViewModel.nombreForm = binding.nombre.getText().toString();
+            mainViewModel.dniForm = binding.dni.getText().toString();
+            mainViewModel.emailForm = binding.email.getText().toString();
+            mainViewModel.telefonoForm = binding.telefono.getText().toString();
+            mainViewModel.diaForm = binding.fecha.getText().toString();
+            mainViewModel.horaForm = binding.hora.getText().toString();
+            mainViewModel.authFotoForm = binding.authfoto.isChecked();
+            mainViewModel.authComunicadoForm = binding.authcomunicado.isChecked();
+            navController.navigate(R.id.action_formFragment_to_privacyFragment);
+        });
     }
 
-    private void CreateData() {
+    private void EditData() {
         String vNombre = binding.nombre.getText().toString();
+        String vDni = binding.dni.getText().toString();
         String vEmail = binding.email.getText().toString();
         String vTelefono = binding.telefono.getText().toString();
 
@@ -70,8 +108,31 @@ public class FormFragment extends Fragment {
         String vAuthFoto = String.valueOf(binding.authfoto.isChecked());
         String vAuthComunicado = String.valueOf(binding.authcomunicado.isChecked());
 
+        db.collection("test").document(mainViewModel.testId).update(
+                "Nombre", vNombre,
+                "DNI", vDni,
+                "Email", vEmail,
+                "Telefono", vTelefono,
+                "Fecha", vFecha,
+                "Authfoto", vAuthFoto,
+                "Authcomunicado", vAuthComunicado
+        );
+    }
+
+    private void CreateData() {
+        String vNombre = binding.nombre.getText().toString();
+        String vDni = binding.dni.getText().toString();
+        String vEmail = binding.email.getText().toString();
+        String vTelefono = binding.telefono.getText().toString();
+        String vDia = binding.fecha.getText().toString();
+        String vHora = binding.hora.getText().toString();
+        String vFecha = vDia + ", " + vHora;
+        String vAuthFoto = String.valueOf(binding.authfoto.isChecked());
+        String vAuthComunicado = String.valueOf(binding.authcomunicado.isChecked());
+
         Map<String, String> map = new HashMap<>();
         map.put("Nombre", vNombre);
+        map.put("DNI", vDni);
         map.put("Email", vEmail);
         map.put("Telefono", vTelefono);
         map.put("Fecha", vFecha);

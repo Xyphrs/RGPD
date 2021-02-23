@@ -18,4 +18,21 @@
     <string name="date">Fecha:</string>
     <string name="autorizacion_de_comunicado">Autorizacion de comunicado:</string>
     <string name="autorizacion_de_foto">Autorizacion de Foto:</string>
+    <string name="priv">Politica de Privacidad</string>
+    <string name="poliprivacidad">Politica de Privacidad</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br></br><br></br> Fusce in augue auctor, malesuada enim at, placerat nisi. Nunc at rhoncus magna, sed pretium lorem. Praesent suscipit at sapien quis pharetra. Curabitur a sem tellus. Donec ex orci, maximus et lobortis quis, dapibus quis elit. Quisque pulvinar bibendum magna finibus lacinia. Sed auctor sagittis orci sed dignissim. Donec metus enim, luctus id tincidunt quis, condimentum vitae lorem. Nullam non ipsum et erat malesuada aliquam. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In a tellus vel nisi ornare laoreet. Maecenas facilisis nec felis nec malesuada. Vivamus neque est, pharetra non nibh ut, lacinia porttitor nibh. Suspendisse potenti. Mauris vel ante nec eros placerat bibendum. Nam rhoncus aliquet nulla a lobortis. Vestibulum sit amet elementum risus. Morbi viverra ex erat, et pharetra ex fringilla ac. Donec sit amet lectus sagittis, interdum enim a, faucibus dui. <br></br><br></br> Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Quisque eget mattis odio. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris a ligula ipsum. Integer dapibus sit amet neque sit amet volutpat. Nunc a euismod diam. Nullam sagittis mi efficitur massa vulputate pulvinar. Aenean ac blandit enim. <br></br><br></br>In a volutpat nibh, sit amet molestie risus. Maecenas condimentum faucibus erat eu blandit. Vivamus mattis auctor turpis tempor ultricies. Nulla facilisi. Ut nibh ante, consectetur nec eleifend ornare, feugiat eget odio. Pellentesque dapibus arcu est, eu sollicitudin velit convallis accumsan. <br></br><br></br> Mauris congue nunc laoreet est imperdiet, in pellentesque dui auctor. Integer aliquet mollis ipsum, ac ultricies risus.</string>
+    <string name="acepto">Acepto</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="firma">Introduce tu firma</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="continuar">Continuar</string>
+    <string name="signtaure">signtaure</string>
+    <string name="siguente">Siguiente</string>
+    <string name="introduzca_sus_datos">Introduzca sus datos</string>
+    <string name="dni">DNI</string>
+    <string name="dnidata">DNI:</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="jugado">Ya has jugado?</string>
+    <string name="newuser">Nuevo Usuario</string>
+    <string name="ingresar">Ingresar</string>
 </resources>

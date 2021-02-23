@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/formFragment">
+    app:startDestination="@id/userSelectionFragment">
 
     <fragment
         android:id="@+id/formFragment"
@@ -13,10 +13,47 @@
         <action
             android:id="@+id/action_formFragment_to_showDataFragment"
             app:destination="@id/showDataFragment" />
+        <action
+            android:id="@+id/action_formFragment_to_privacyFragment"
+            app:destination="@id/privacyFragment" />
     </fragment>
     <fragment
         android:id="@+id/showDataFragment"
         android:name="com.example.rgpd.Form.ShowDataFragment"
         android:label="fragment_show_data"
-        tools:layout="@layout/fragment_show_data" />
+        tools:layout="@layout/fragment_show_data" >
+        <action
+            android:id="@+id/action_showDataFragment_to_formFragment"
+            app:destination="@id/formFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/privacyFragment"
+        android:name="com.example.rgpd.Form.PrivacyFragment"
+        android:label="fragment_privacy"
+        tools:layout="@layout/fragment_privacy" >
+        <action
+            android:id="@+id/action_privacyFragment_to_formFragment"
+            app:destination="@id/formFragment" />
+        <action
+            android:id="@+id/action_privacyFragment_to_signFragment"
+            app:destination="@id/signFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signFragment"
+        android:name="com.example.rgpd.Form.SignFragment"
+        android:label="fragment_sign"
+        tools:layout="@layout/fragment_sign" >
+        <action
+            android:id="@+id/action_signFragment_to_privacyFragment"
+            app:destination="@id/formFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userSelectionFragment"
+        android:name="com.example.rgpd.Form.UserSelectionFragment"
+        android:label="fragment_user_selection"
+        tools:layout="@layout/fragment_user_selection" >
+        <action
+            android:id="@+id/action_userSelectionFragment_to_formFragment"
+            app:destination="@id/formFragment" />
+    </fragment>
 </navigation>

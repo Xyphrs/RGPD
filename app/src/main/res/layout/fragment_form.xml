@@ -7,6 +7,20 @@
     tools:context=".Form.FormFragment"
     android:orientation="vertical">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="16dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rellena el formulario"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:layout_marginBottom="10dp"/>
+
     <EditText
         android:id="@+id/nombre"
         android:layout_width="match_parent"
@@ -14,6 +28,14 @@
         android:inputType="text"
         android:autofillHints="Paco"
         android:hint="@string/nombre"/>
+
+    <EditText
+        android:id="@+id/dni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:autofillHints="Paco"
+        android:hint="@string/dni"/>
 
     <EditText
         android:id="@+id/email"
@@ -71,6 +93,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/comunicado"/>
+
+    <CheckBox
+        android:id="@+id/authprivacidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:clickable="false"
+        android:checked="false"
+        android:text="@string/priv"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/enviar"

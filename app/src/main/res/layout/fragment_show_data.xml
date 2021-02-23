@@ -35,6 +35,16 @@
             android:textAlignment="textEnd"/>
 
         <TextView
+            android:id="@+id/dnidata"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:textSize="13sp"
+            android:text="@string/dnidata"
+            android:textAlignment="textEnd"/>
+
+        <TextView
             android:id="@+id/emaildata"
             android:text="@string/email"
             android:layout_width="match_parent"
@@ -92,5 +102,20 @@
             android:text="@string/editbtn"/>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/signature"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:contentDescription="@string/signtaure"
+        android:layout_weight="1"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/siguiente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:text="@string/siguente" />
 
 </LinearLayout>
