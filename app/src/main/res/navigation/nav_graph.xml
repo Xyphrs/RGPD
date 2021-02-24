@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_showDataFragment_to_formFragment"
             app:destination="@id/formFragment" />
+        <action
+            android:id="@+id/action_showDataFragment_to_usersListFragment"
+            app:destination="@id/usersListFragment" />
     </fragment>
     <fragment
         android:id="@+id/privacyFragment"
@@ -54,6 +57,15 @@
         tools:layout="@layout/fragment_user_selection" >
         <action
             android:id="@+id/action_userSelectionFragment_to_formFragment"
+            app:destination="@id/formFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/usersListFragment"
+        android:name="com.example.rgpd.Form.UsersListFragment"
+        android:label="fragment_users_list"
+        tools:layout="@layout/fragment_users_list" >
+        <action
+            android:id="@+id/action_usersListFragment_to_formFragment"
             app:destination="@id/formFragment" />
     </fragment>
 </navigation>

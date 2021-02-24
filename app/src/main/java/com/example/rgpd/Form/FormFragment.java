@@ -74,8 +74,7 @@ public class FormFragment extends Fragment {
                 } else {
                     CreateData();
                 }
-                SystemClock.sleep(1500);
-                System.out.println(mainViewModel.testId);
+                SystemClock.sleep(2000);
                 navController.navigate(R.id.action_formFragment_to_showDataFragment);
             } else {
                 Toast.makeText(getContext(), "No puedes enviar el formulario sin aceptar las politicas de privacidad y firmar ", Toast.LENGTH_LONG).show();

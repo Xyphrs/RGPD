@@ -29,10 +29,15 @@
     <string name="signtaure">signtaure</string>
     <string name="siguente">Siguiente</string>
     <string name="introduzca_sus_datos">Introduzca sus datos</string>
-    <string name="dni">DNI</string>
     <string name="dnidata">DNI:</string>
     <string name="bienvenido">Bienvenido</string>
     <string name="jugado">Ya has jugado?</string>
     <string name="newuser">Nuevo Usuario</string>
     <string name="ingresar">Ingresar</string>
+    <string name="addplayer">Añadir Jugador</string>
+    <string name="senlink">COMPARTIR ENLACE</string>
+    <string name="tick">tick</string>
+    <string name="dni">DNI</string>
+    <string name="estado">Estado</string>
+    <string name="jugador">Jugador</string>
 </resources>

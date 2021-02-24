@@ -4,6 +4,9 @@ import android.graphics.Bitmap;
 
 import androidx.lifecycle.ViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainViewModel extends ViewModel {
     public String testId;
     public String nombreForm;
@@ -15,4 +18,6 @@ public class MainViewModel extends ViewModel {
     public boolean authFotoForm;
     public boolean authComunicadoForm;
     public Bitmap signature;
+    public Users users = null;
+    public List<Users> usersList = new ArrayList<>();
 }

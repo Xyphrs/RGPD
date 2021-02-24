@@ -48,8 +48,11 @@ public class ShowDataFragment extends Fragment {
                 
                 binding.signature.setImageBitmap(mainViewModel.signature);
             });
+            System.out.println(mainViewModel.testId);
         }
 
         binding.editbtn.setOnClickListener(v -> navController.navigate(R.id.action_showDataFragment_to_formFragment));
+
+        binding.siguiente.setOnClickListener(v -> navController.navigate(R.id.action_showDataFragment_to_usersListFragment));
     }
 }
