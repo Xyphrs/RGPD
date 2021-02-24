@@ -1,6 +1,9 @@
 package com.example.rgpd.Form;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,17 +14,10 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.rgpd.R;
 import com.example.rgpd.databinding.FragmentUsersListBinding;
 import com.example.rgpd.databinding.ViewholderUsersBinding;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class UsersListFragment extends Fragment {
     FragmentUsersListBinding binding;
